@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marisol Martinez · Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #5B2D9E;
+  --purple-mid: #7B4AC0;
+  --purple-light: #B48EE8;
+  --purple-pale: #EDE6F8;
+  --ink: #111014;
+  --ink-mid: #2A2530;
+  --muted: #8A7A9A;
+  --bg: #F5F3FA;
+  --white: #FFFFFF;
+  --border: rgba(91,45,158,0.13);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  background: rgba(245,243,250,0.9);
+  backdrop-filter: blur(14px);
+  border-bottom: 0.5px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--purple); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--purple); }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 72px;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+.hero-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.1s forwards;
+}
+.hero-photo-frame {
+  width: 300px;
+  height: 380px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 0.5px solid var(--border);
+  background: var(--purple-pale);
+}
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.hero-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: linear-gradient(160deg, var(--purple-pale) 0%, #DDD4F5 100%);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.hero-photo-placeholder:hover { background: linear-gradient(160deg, #DDD4F5 0%, #CFC3EF 100%); }
+.photo-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(91,45,158,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  color: var(--purple-mid);
+}
+.photo-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--purple-mid);
+}
+.photo-sublabel {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+  padding: 0 20px;
+}
+.hero-photo-accent {
+  width: 300px;
+  height: 3px;
+  background: linear-gradient(to right, var(--purple), var(--purple-light), transparent);
+  margin-top: 0;
+}
+.hero-text-col {
+  display: flex;
+  flex-direction: column;
+}
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.2;
+  pointer-events: none;
+}
+.blob-1 {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, #B48EE8 0%, #7B4AC0 60%, transparent 100%);
+  top: -100px; right: -120px;
+  animation: drift 12s ease-in-out infinite alternate;
+}
+.blob-2 {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, #A8C8F8 0%, #C4A0E8 60%, transparent 100%);
+  bottom: 0; left: -60px;
+  animation: drift 16s ease-in-out infinite alternate-reverse;
+}
+@keyframes drift {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(30px,20px) scale(1.08); }
+}
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple-mid);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.1s forwards;
+}
+.hero-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(72px, 11vw, 136px);
+  line-height: 0.92;
+  letter-spacing: -2px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.25s forwards;
+}
+.hero-name .purple { color: var(--purple); }
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 68px);
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--ink-mid);
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.38s forwards;
+}
+.hero-quote {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.5s forwards;
+}
+.hero-stack {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.62s forwards;
+}
+.stack-pill {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  color: var(--purple);
+  background: rgba(91,45,158,0.05);
+  transition: background 0.2s, color 0.2s;
+}
+.stack-pill:hover { background: var(--purple); color: #fff; }
+.hero-contact {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.75s forwards;
+}
+.hero-contact a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.hero-contact a:hover { color: var(--purple); border-color: var(--purple); }
+.hero-rule {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--purple-mid), transparent);
+  opacity: 0.3;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* DIVIDER */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--purple-light), transparent);
+  opacity: 0.3;
+  margin: 0 48px;
+}
+
+/* PROYECTOS NAV */
+#proyectos-nav { padding: 96px 48px 72px; }
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple-mid);
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+.proy-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.proy-nav-btn {
+  background: var(--white);
+  border: none;
+  padding: 36px 28px;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.proy-nav-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--purple);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.proy-nav-btn:hover { background: var(--purple-pale); }
+.proy-nav-btn:hover::after { transform: scaleX(1); }
+.proy-nav-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1;
+  color: var(--purple-pale);
+  letter-spacing: -2px;
+  transition: color 0.25s;
+}
+.proy-nav-btn:hover .proy-nav-num { color: var(--purple-light); }
+.proy-nav-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 21px;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.proy-nav-tool { font-size: 12px; color: var(--muted); font-weight: 300; }
+.proy-nav-arrow {
+  font-size: 20px;
+  color: var(--purple);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.2s, transform 0.2s;
+  margin-top: 4px;
+}
+.proy-nav-btn:hover .proy-nav-arrow { opacity: 1; transform: translateX(0); }
+
+/* PROJECT SECTIONS */
+.project-section { padding: 96px 48px; }
+.project-section:nth-of-type(odd) { background: var(--white); }
+.project-section:nth-of-type(even) { background: var(--bg); }
+.proj-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.proj-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 110px;
+  line-height: 1;
+  letter-spacing: -4px;
+  color: var(--purple-pale);
+  margin-bottom: -16px;
+  display: block;
+}
+.proj-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(38px, 4.5vw, 60px);
+  line-height: 0.95;
+  letter-spacing: -1.5px;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.proj-title span { color: var(--purple); }
+.proj-desc {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.proj-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+.proj-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 2px;
+  background: var(--ink);
+  color: var(--white);
+}
+.proj-tag.pt { background: var(--purple); }
+.proj-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--purple);
+  padding: 13px 26px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.proj-cta:hover { background: var(--ink); transform: translateX(3px); }
+.cta-arrow { transition: transform 0.2s; }
+.proj-cta:hover .cta-arrow { transform: translateX(4px); }
+
+/* MOCKUPS */
+.proj-mockup {
+  background: var(--ink);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(91,45,158,0.2);
+}
+.mock-topbar {
+  background: #1C1726;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.d1{background:#FF5F57}.d2{background:#FEBC2E}.d3{background:#28C840}
+.mock-urlbar {
+  flex: 1; margin-left: 10px; height: 7px;
+  background: rgba(255,255,255,0.06); border-radius: 4px;
+}
+.mock-body { padding: 20px; }
+.chart-label {
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 14px;
+}
+.bar-chart { display: flex; align-items: flex-end; gap: 10px; height: 120px; }
+.bar {
+  flex: 1; border-radius: 3px 3px 0 0; position: relative;
+}
+.bv {
+  position: absolute; top: -18px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 11px; color: rgba(255,255,255,0.7);
+}
+.bl {
+  position: absolute; bottom: -18px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px; color: rgba(255,255,255,0.3); white-space: nowrap;
+}
+.kpi-row { display: flex; gap: 8px; margin-top: 32px; }
+.kpi {
+  flex: 1; background: rgba(255,255,255,0.04);
+  border-radius: 4px; padding: 10px;
+  border: 0.5px solid rgba(255,255,255,0.05);
+}
+.kpi-l { font-size: 9px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.kpi-v { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: #fff; }
+.kpi-s { font-size: 10px; margin-top: 2px; }
+.up{color:#7EE8A2}.dn{color:#E87E9A}
+
+.mock-table-wrap { padding: 14px 16px; }
+.mtable { width: 100%; border-collapse: collapse; }
+.mtable th {
+  font-size: 9px; color: rgba(255,255,255,0.3);
+  text-align: left; padding: 6px 8px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.mtable td {
+  font-size: 12px; color: rgba(255,255,255,0.65);
+  padding: 9px 8px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.04);
+}
+.badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 10px;
+  padding: 3px 8px; border-radius: 2px; letter-spacing: 0.06em;
+}
+.bg{background:rgba(126,232,162,0.15);color:#7EE8A2}
+.bp{background:rgba(180,142,232,0.15);color:#B48EE8}
+.br{background:rgba(232,126,154,0.15);color:#E87E9A}
+
+.mock-code { padding: 18px 20px; font-family: 'Courier New', monospace; font-size: 12px; line-height: 1.9; }
+.cc{color:#7E6E9A}.ck{color:#B48EE8}.cf{color:#82D9F0}.cs{color:#7EE8A2}.cn{color:#FEBC2E}.cp{color:rgba(255,255,255,0.72)}
+.cl { display: block; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 14px 18px; }
+.stat-box {
+  background: rgba(255,255,255,0.04); border-radius: 4px; padding: 11px;
+  border-left: 2px solid var(--purple);
+}
+.sb-l { font-size: 9px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+.sb-v { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: #fff; }
+
+/* FOOTER */
+footer {
+  padding: 52px 48px;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.ft-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 28px; color: #fff; letter-spacing: -0.5px;
+}
+.ft-name span { color: var(--purple-light); }
+.ft-sub { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 4px; }
+.ft-links { display: flex; gap: 20px; }
+.ft-links a {
+  font-size: 11px; color: rgba(255,255,255,0.35);
+  text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.ft-links a:hover { color: var(--purple-light); }
+
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 800px) {
+  nav { padding: 14px 20px; }
+  .nav-links { gap: 16px; }
+  #hero { padding: 100px 20px 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero-photo-frame { width: 180px; height: 220px; }
+  .hero-photo-accent { width: 180px; }
+  .hero-rule { display: none; }
+  #proyectos-nav { padding: 64px 20px 48px; }
+  .proy-nav-grid { grid-template-columns: 1fr; }
+  .project-section { padding: 64px 20px; }
+  .proj-inner { grid-template-columns: 1fr; gap: 40px; }
+  .proj-number { font-size: 80px; }
+  footer { padding: 36px 20px; flex-direction: column; text-align: center; }
+  .section-divider { margin: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo"></a>
+  <ul class="nav-links">
+    <li><a href="#hero">Inicio</a></li>
+    <li><a href="#p1">01</a></li>
+    <li><a href="#p2">02</a></li>
+    <li><a href="#p3">03</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="hero-rule"></div>
+
+  <div class="hero-inner">
+
+    <!-- FOTO -->
+    <div class="hero-photo-col">
+      <div class="hero-photo-frame" id="photo-frame">
+        <img id="photo-img" src="./img/foto.jpg" alt="Foto de Marisol Martinez">
+      </div>
+      <div class="hero-photo-accent"></div>
+      <input type="file" id="photo-input" accept="image/*" style="display:none">
+    </div>
+
+    <!-- TEXTO -->
+    <div class="hero-text-col">
+      <p class="hero-eyebrow">Data Analyst · Portfolio</p>
+
+      <h1 class="hero-name">
+        Marisol<br>
+        <span class="purple">Martínez</span>
+      </h1>
+
+      <p class="hero-quote">
+        "Datos. Interpretación. Poder."<br><br>
+        Analista de Datos con curiosidad por descubrir las historias ocultas en los números. Con background en tecnología gubernamental, ERP y negocio propio, entiendo los datos porque primero entendí los procesos detrás de ellos.<br>
+        Me especializo en el ciclo completo: limpiar, transformar y visualizar datos para ayudar a los equipos a tomar mejores decisiones basadas en evidencia.
+      </p>
+
+      <div class="hero-stack">
+        <span class="stack-pill">Python</span>
+        <span class="stack-pill">SQL</span>
+        <span class="stack-pill">Pandas</span>
+        <span class="stack-pill">Modelos Predictivos</span>
+        <span class="stack-pill">Excel</span>
+        <span class="stack-pill">Visualización de Datos</span>
+      </div>
+
+      <div class="hero-contact">
+        <a href="mailto:marisol.martinezpulgarin@gmail.com">marisol.martinezpulgarin@gmail.com</a>
+        <a href="https://marisolmtzp.github.io" target="_blank">marisolmtzp.github.io ↗</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── PROYECTO 1 ─── -->
+<section class="project-section" id="p1">
+  <div class="proj-inner">
+
+    <div class="proj-left reveal">
+      <span class="proj-number">01</span>
+      <h2 class="proj-title">Dashboard<br>de <span>Ventas</span></h2>
+      <p class="proj-desc">
+        Diseño e implementación de un dashboard interactivo en Power BI para el seguimiento de KPIs comerciales. Visualiza tendencias, comparativas por región y rendimiento de productos en tiempo real, con filtros dinámicos y alertas automáticas conectadas a SQL Server.
+      </p>
+      <div class="proj-tags">
+        <span class="proj-tag pt">Power BI</span>
+        <span class="proj-tag">SQL Server</span>
+        <span class="proj-tag pt">DAX</span>
+        <span class="proj-tag">ETL</span>
+      </div>
+      <a href="#" class="proj-cta">Ver proyecto <span class="cta-arrow">→</span></a>
+    </div>
+
+    <div class="proj-right reveal" style="transition-delay:0.15s">
+      <div class="proj-mockup">
+        <div class="mock-topbar">
+          <div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div>
+          <div class="mock-urlbar"></div>
+        </div>
+        <div class="mock-body">
+          <p class="chart-label">Ventas por región · Q4 2024</p>
+          <div class="bar-chart">
+            <div class="bar" style="height:68%;background:linear-gradient(to top,#5B2D9E,#9B6FD0)">
+              <span class="bv">$84k</span><span class="bl">Norte</span>
+            </div>
+            <div class="bar" style="height:92%;background:linear-gradient(to top,#5B2D9E,#C4A0E8)">
+              <span class="bv">$112k</span><span class="bl">Centro</span>
+            </div>
+            <div class="bar" style="height:53%;background:linear-gradient(to top,#3D1E72,#7B4AC0)">
+              <span class="bv">$65k</span><span class="bl">Sur</span>
+            </div>
+            <div class="bar" style="height:77%;background:linear-gradient(to top,#5B2D9E,#9B6FD0)">
+              <span class="bv">$94k</span><span class="bl">Este</span>
+            </div>
+            <div class="bar" style="height:45%;background:linear-gradient(to top,#3D1E72,#7B4AC0)">
+              <span class="bv">$55k</span><span class="bl">Oeste</span>
+            </div>
+          </div>
+          <div class="kpi-row" style="margin-top:32px">
+            <div class="kpi">
+              <div class="kpi-l">Total ventas</div>
+              <div class="kpi-v">$410k</div>
+              <div class="kpi-s up">↑ 18% vs Q3</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-l">Ticket medio</div>
+              <div class="kpi-v">$2.4k</div>
+              <div class="kpi-s up">↑ 7%</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-l">Devoluciones</div>
+              <div class="kpi-v">3.2%</div>
+              <div class="kpi-s dn">↓ 0.8%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── PROYECTO 2 ─── -->
+<section class="project-section" id="p2">
+  <div class="proj-inner">
+
+    <div class="proj-right reveal" style="transition-delay:0.15s; order:1">
+      <div class="proj-mockup">
+        <div class="mock-topbar">
+          <div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div>
+          <div class="mock-urlbar"></div>
+        </div>
+        <div class="mock-table-wrap">
+          <p class="chart-label" style="margin-bottom:10px">Análisis de rotación · 2024</p>
+          <table class="mtable">
+            <thead>
+              <tr><th>Departamento</th><th>Empleados</th><th>Rotación</th><th>Estado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Tecnología</td><td>48</td><td>8.3%</td><td><span class="badge bg">Bajo</span></td></tr>
+              <tr><td>Ventas</td><td>112</td><td>24.1%</td><td><span class="badge br">Alto</span></td></tr>
+              <tr><td>Operaciones</td><td>76</td><td>14.7%</td><td><span class="badge bp">Medio</span></td></tr>
+              <tr><td>Marketing</td><td>34</td><td>10.2%</td><td><span class="badge bg">Bajo</span></td></tr>
+              <tr><td>Finanzas</td><td>29</td><td>6.9%</td><td><span class="badge bg">Bajo</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="kpi-row" style="padding:0 16px 16px">
+          <div class="kpi">
+            <div class="kpi-l">Total empleados</div>
+            <div class="kpi-v">299</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-l">Rotación prom.</div>
+            <div class="kpi-v">12.8%</div>
+            <div class="kpi-s dn">↑ 2.1%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-left reveal" style="order:2">
+      <span class="proj-number">02</span>
+      <h2 class="proj-title">Análisis<br>de <span>RRHH</span></h2>
+      <p class="proj-desc">
+        Exploración exhaustiva de datos de recursos humanos con Python y Pandas. Identificación de patrones de rotación, análisis de satisfacción laboral y segmentación de perfiles para apoyar decisiones estratégicas de talento en organizaciones de más de 300 empleados.
+      </p>
+      <div class="proj-tags">
+        <span class="proj-tag pt">Python</span>
+        <span class="proj-tag">Pandas</span>
+        <span class="proj-tag pt">Matplotlib</span>
+        <span class="proj-tag">Seaborn</span>
+      </div>
+      <a href="#" class="proj-cta">Ver proyecto <span class="cta-arrow">→</span></a>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── PROYECTO 3 ─── -->
+<section class="project-section" id="p3">
+  <div class="proj-inner">
+
+    <div class="proj-left reveal">
+      <span class="proj-number">03</span>
+      <h2 class="proj-title">Modelo de<br><span>Predicción</span></h2>
+      <p class="proj-desc">
+        Pipeline completo de machine learning para predecir deserción de clientes (churn). Desde la limpieza de datos hasta la evaluación final, logrando 91% de precisión con Random Forest, análisis de importancia de variables y reporte ejecutivo automatizado.
+      </p>
+      <div class="proj-tags">
+        <span class="proj-tag pt">Scikit-learn</span>
+        <span class="proj-tag">Python</span>
+        <span class="proj-tag pt">Random Forest</span>
+        <span class="proj-tag">Jupyter</span>
+      </div>
+      <a href="#" class="proj-cta">Ver proyecto <span class="cta-arrow">→</span></a>
+    </div>
+
+    <div class="proj-right reveal" style="transition-delay:0.15s">
+      <div class="proj-mockup">
+        <div class="mock-topbar">
+          <div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div>
+          <div class="mock-urlbar"></div>
+        </div>
+        <div class="mock-code">
+          <span class="cl"><span class="cc"># Modelo de predicción de churn</span></span>
+          <span class="cl"><span class="ck">from</span> <span class="cp">sklearn.ensemble</span> <span class="ck">import</span> <span class="cf">RandomForestClassifier</span></span>
+          <span class="cl"><span class="ck">from</span> <span class="cp">sklearn.metrics</span> <span class="ck">import</span> <span class="cf">accuracy_score</span></span>
+          <span class="cl">&nbsp;</span>
+          <span class="cl"><span class="cp">model = </span><span class="cf">RandomForestClassifier</span><span class="cp">(</span></span>
+          <span class="cl"><span class="cp">&nbsp;&nbsp;&nbsp;&nbsp;n_estimators=</span><span class="cn">200</span><span class="cp">,</span></span>
+          <span class="cl"><span class="cp">&nbsp;&nbsp;&nbsp;&nbsp;max_depth=</span><span class="cn">8</span><span class="cp">,</span></span>
+          <span class="cl"><span class="cp">&nbsp;&nbsp;&nbsp;&nbsp;random_state=</span><span class="cn">42</span></span>
+          <span class="cl"><span class="cp">)</span></span>
+          <span class="cl"><span class="cp">model.</span><span class="cf">fit</span><span class="cp">(X_train, y_train)</span></span>
+          <span class="cl">&nbsp;</span>
+          <span class="cl"><span class="cc"># Accuracy: 91.3%  ✓</span></span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="sb-l">Accuracy</div><div class="sb-v">91.3%</div></div>
+          <div class="stat-box"><div class="sb-l">F1 Score</div><div class="sb-v">0.894</div></div>
+          <div class="stat-box"><div class="sb-l">Precision</div><div class="sb-v">89.7%</div></div>
+          <div class="stat-box"><div class="sb-l">Recall</div><div class="sb-v">88.2%</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="ft-name">Marisol <span>Martínez</span></div>
+    <div class="ft-sub">Data Analyst · Python · SQL · Modelos Predictivos · Excel · Visualización de Datos</div>
+  </div>
+  <div class="ft-links">
+    <a href="mailto:marisol.martinezpulgarin@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/marisolmtzp" target="_blank">Linkedin ↗</a>
+    <a href="#hero">↑ Inicio</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.getElementById('photo-input').addEventListener('change', function() {
+  const file = this.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = document.getElementById('photo-img');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    document.getElementById('photo-placeholder').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+});
+</script>
+
+</body>
+</html>
