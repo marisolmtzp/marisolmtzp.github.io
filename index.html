@@ -691,9 +691,9 @@ Lima y Bogotá: intervención más urgente. Congestión alta + PIB bajo indican 
       
         
         <div class="mock-body">
-<img id="photo-img" src="./img/p4_Merge.png" alt="P1_img1" style="width: 100%;">
-<img id="photo-img" src="./img/p3_Comparativa.png" alt="P1_img2" style="width: 100%;">
-<img id="photo-img" src="./img/p2_Histograma.png" alt="P1_img3" style="width: 100%;">         
+<img id="photo-img" src="./img/p7_embgeneral.png" alt="P2_img1" style="width: 100%;">
+<img id="photo-img" src="./img/p6_embpais.png" alt="P2_img2" style="width: 100%;">
+<img id="photo-img" src="./img/p5_retpais.png" alt="P2_img3" style="width: 100%;">         
           
           
         </div>
@@ -702,17 +702,30 @@ Lima y Bogotá: intervención más urgente. Congestión alta + PIB bajo indican 
 
     <div class="proj-left reveal" style="order:2">
       <span class="proj-number">02</span>
-      <h2 class="proj-title">Análisis<br>de <span>RRHH</span></h2>
+      <h2 class="proj-title">Análisis de Embudo y Retención<br>para <span>Mercado Libre</span></h2>
       <p class="proj-desc">
-        Exploración exhaustiva de datos de recursos humanos con Python y Pandas. Identificación de patrones de rotación, análisis de satisfacción laboral y segmentación de perfiles para apoyar decisiones estratégicas de talento en organizaciones de más de 300 empleados.
+        Exploración exhaustiva de datos de recursos humanos con Python y Pandas. 
+        Identificación de patrones de rotación, análisis de satisfacción laboral y segmentación de perfiles para 
+        apoyar decisiones estratégicas de talento en organizaciones de más de 300 empleados.
+
+        Problema: Análisis del funnel de compras de Mercado Libre para entender en qué paso se observa la mayor caída porcentual de usuarios y cómo varía esta pérdida por país.
+        
+        Qué hice: Usé SQL para mapear el embudo de conversión completo, identificar los principales puntos de fuga y evaluar la retención de usuarios por cohortes. <br> 
+        Analicé Tasa de Conversión entre cada etapa clave del "Embudo General", así como el "Embudo por País" del 01/01/2025 al 08/31/2025 <br>
+        También realicé análisis de Retención de Usuarios para entender qué tan bien retiene a los usuarios en el tiempo, comprender su tasa de retención en D7, D14, D21, D28 y cómo se comporta la retención agrupado por país. <br>
+        Resultado o aprendizaje: Identifiqué en qué etapa del proceso se pierden usuarios y cómo se puede mejorar su retención a lo largo del tiempo. <br>
+        Hallazgos Clave: <br>
+        Funnel de Compras Caída crítica: select_item→add_to_cart (76.89%→11%). Posible fricción: precios poco claros, falta de reseñas o expectativa no cumplida. Resto del embudo estable. Uruguay = outlier positivo (0% abandono post-checkout); Paraguay, Ecuador y Colombia = 0% en purchase. Recomendaciones: revisar presentación/precios, investigar barreras de pago y envío, replicar modelo Uruguay. <br>
+        Retención de Usuarios D7 sólido (~87%, consistente por país y cohorte), pero colapso progresivo: D7→D14 −30pts, D28 = 2–3%. Punto crítico universal: no es activación, es consolidación del hábito. Uruguay = mayor caída relativa en D7→D14 (−38pts); MX y BR mejor desempeño intermedio. Recomendaciones: onboarding 14 días, mostrar progreso en D6–D8, notificaciones personalizadas + loops hábito (detonador→rutina→recompensa).<br><br>
       </p>
       <div class="proj-tags">
-        <span class="proj-tag pt">Python</span>
-        <span class="proj-tag">Pandas</span>
-        <span class="proj-tag pt">Matplotlib</span>
-        <span class="proj-tag">Seaborn</span>
+        <span class="proj-tag">SQL</span>
+        <span class="proj-tag pt">CTEs</span>
+        <span class="proj-tag">Análisis de Funnels</span>
+        <span class="proj-tag">Análisis de Cohortes</span>
+        <span class="proj-tag">Estadística Descriptiva</span>
+        <span class="proj-tag">Análisis de Journeys de Usuario </span>
       </div>
-      <a href="#" class="proj-cta">Ver proyecto <span class="cta-arrow">→</span></a>
     </div>
 
   </div>
