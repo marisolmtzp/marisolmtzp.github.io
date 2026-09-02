@@ -627,36 +627,64 @@ footer {
 
     <div class="proj-left reveal">
       <span class="proj-number">01</span>
-      <h2 class="proj-title">Dashboard Ejectivo <br>Análisis Comercial <span>Andes Capital Real Estate</span></h2>
+      <h2 class="proj-title">Dashboard Ejectivo<br>Análisis Comercial<span>Andes Capital Real Estate (2023–2024)</span></h2>
       <p class="proj-desc">
-        El Banco Interamericano de Desarrollo (BID) busca identificar en qué ciudades de América Latina invertir en infraestructura de transporte para aumentar la productividad y el bienestar de la población.
-Para orientar esa decisión, este análisis busca responder tres preguntas clave: <br> 
-¿Qué ciudades presentan alta congestión y baja productividad económica? <br>
-¿Cuáles muestran los mejores indicadores combinados (movilidad eficiente y economía fuerte)? <br>
-¿Qué variables parecen tener una relación más fuerte con el desarrollo urbano? <br><br>
+La empresa inmobiliaria Andes Capital Real Estate necesita comprender mejor el desempeño comercial. <br>
+La empresa gestiona la venta de diferentes tipos de propiedades a través de distintos canales de venta y segmentos de clientes. <br>
+Actualmente, la información existe a nivel transaccional, pero no hay una visión analítica clara del negocio.<br><br>
 
-Qué hice: Crucé datos de tráfico de TomTom Traffic Index (datos de tráfico en tiempo real) con indicadores económicos de la OECD 
-(PIB per cápita, desempleo y población) usando Python y Pandas. Limpié, uní y analicé ambas bases para obtener información útil 
-para la toma de decisiones.<br>
-Resultado o aprendizaje: Identifiqué la correlación directa entre el retraso por congestión y la caída en el desempeño económico urbano.<br><br>
-
+👉 La misión del dashboard interactivo en Power BI es permitir analizar ventas, clientes y propiedades para apoyar decisiones estratégicas.<br>
+El dashboard ayuda a responder preguntas como:<br>
+¿Cuál es el ingreso total generado por las ventas de propiedades?<br>
+¿Qué tipo de propiedad genera más ingresos?<br>
+¿Qué segmentos de clientes compran más?<br>
+¿Cómo evolucionan las ventas en el tiempo?<br>
+¿El negocio está creciendo año contra año?<br>
+¿Los clientes vuelven a comprar después de su primera compra?<br><br>
+  
+Qué hice: Preparé y validé los datos para el análisis.<br>
+Construí el modelo de datos en esquema estrella.<br>
+Creé medidas analíticas para análisis comercial.<br>
+Apliqué inteligencia de tiempo para analizar tendencias.<br>
+Diseñé los dashboards claros para análisis ejecutivo bajo marco SCQA/Minto.<br>
+Analicé de la recurrencia de clientes utilizando cohortes.<br><br>
+        
 <small>
-Hallazgos Clave: <br>
-CIUDADES PRIORITARIAS PARA INVERSIÓN (metro, BRT, tráfico inteligente): <br>
-Lima [13,472USD/1,052min] — congestión severa, baja productividad <br>
-Bogotá [11,442USD/1,142min] — alta congestión + desempleo alto <br>
-Sao Paulo [14,703USD/1,729min] — megalópolis saturada <br>
-CDMX [21,111USD/2,833min] — mayor congestión de la región <br>
-Lima y Bogotá: intervención más urgente. Congestión alta + PIB bajo indican que la infraestructura vial está frenando la productividad y el bienestar. 
+HALLAZGOS CLAVE: <br>
+Ingreso Total: $6,012,502,170.00<br>
+Cantidad de Ventas: 8500<br>
+Ticket Promedio: $707,353.20<br>
+Comisión Total: $200,627,166.00<br>
+Tipo de propiedad con mayor revenue: Casa($2,240,535,304.00) seguido por Comercial($1,924,691,634.00) y Departamento($1,847,275,232.00)<br> 
+Ciudad con mayores ventas: CDMX($3,242,231,285.00) vs Bogotá($2,770,270,885.00)<br>
+Canal de venta más eficiente en ingresos: Corredor($4,379,990,279.00) vs Directo ($1,632,511,891.00)<br><br>
+  
+Patrón de estacionalidad en la evolución de ventas en el tiempo (ambos años, ambas ciudades): <br>
+Pico en marzo-abril, caída en mayo-agosto, segundo pico en septiembre-noviembre, ligera caída en diciembre. <br>
+Ticket promedio se mantiene estable ($641mil-$799mil) pero el número de ventas varía fuertemente (224-494, casi el doble entre min y max) <br>
+sugiere que la estacionalidad es un fenómeno de volumen, las caídas se deben a menos ventas no venta de propiedades más baratas.<br><br>
+
+Segmento con mayor parte del ingreso: Clientes Primera Vez($3,783,579,998.00) vs Inversionista($1,471,444,845.00) y Alto patrimonio($757,477,327.00)<br>
+Clientes con mayor concurrencia: los adquiridos en cohortes de 2023 (las primeras de 2023-01 a 2023-04 concentran la mayor recurrencia).<br>
+Crecimiento YoY en ventas: 11.14%<br>
+
+RECOMENDACIONES ESTRATÉGICAS:<br>
+
+Priorizar la comercialización de propiedades tipo Casa.<br>
+Fortalecer el canal de ventas Corredor que presenta mayor participación en el revenue.<br>
+Implementar estrategias de retención para mejorar la recompra en cohortes recientes.<br>
+Ya que en los meses valle existen menos compradores en el mercado se recomienda:<br>
+implementar acciones de marketing que incentiven la demanda sin erosionar el precio (anticipar acciones de marketing, <br>
+incentivos no ligados al precio, apalancarse con segmentos de cliente y canales de venta dominantes)<br>
 </small><br><br>
       </p>
       <div class="proj-tags">
-        <span class="proj-tag">Python</span>
-        <span class="proj-tag pt">Pandas</span>
-        <span class="proj-tag pt">NumPy</span>
-        <span class="proj-tag pt">Seaborn</span>
-        <span class="proj-tag pt">Matplotlib</span>
-        <span class="proj-tag">Jupyter Notebook</span>
+        <span class="proj-tag">Excel</span>
+        <span class="proj-tag pt">Power BI</span>
+        <span class="proj-tag pt">Power Query - Modelado Estrella</span>
+        <span class="proj-tag pt">DAX comerciales / DAX inteligencia de tiempo</span>
+        <span class="proj-tag pt">Dashboards - SCQA/Minto</span>
+        <span class="proj-tag">Análisis de Cohortes</span>
       </div>
   <a href="https://github.com/marisolmtzp/10_dashboard_analisis_comercial_ACRE" class="proj-cta">Ver proyecto <span class="cta-arrow">→</span></a>
     </div>
