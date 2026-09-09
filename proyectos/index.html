@@ -539,9 +539,11 @@
 
           <h4>Metodología</h4>
           <ul class="dash">
-            <li><strong>Preprocesamiento de datos:</strong> limpieza, estandarización y validación de calidad de datos.</li>
+            <li><strong>Limpieza de datos:</strong> Se unificaron tres archivos CSV en un libro de Excel para su carga a Power BI, corrigiendo problemas de codificación (UTF-8) y validando ausencia de duplicados y valores categóricos inconsistentes en las tablas de hechos y dimensiones.</li>
+            <li><strong>Modelado de datos:</strong> Se construyó un modelo en esquema estrella con hecho_ventas_propiedades como tabla de hechos y las dimensiones dim_clientes, dim_propiedades y dim_fecha (esta última creada con DAX), estableciendo relaciones 1:* con dirección de filtro única.</li>
+            <li><strong>Creación de medidas (DAX):</strong> Se desarrollaron medidas base (Ingreso Total, Cantidad de Ventas, Ticket Promedio, Comisión Total) y medidas de participación (%) con contexto de filtro modificado, para analizar el peso relativo de cada segmento y tipo de propiedad.</li>
+            <li><strong>Análisis de cohortes:</strong> Se construyó una matriz de retención mensual para identificar patrones de recompra de clientes a lo largo del tiempo.</li>
             <li><strong>Análisis exploratorio:</strong> identificación de patrones y relaciones clave.</li>
-            <li><strong>Modelado / visualización:</strong> técnica principal usada para responder las preguntas.</li>
           </ul>
 
           <h4>Conclusiones y recomendaciones</h4>
