@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marisol Martínez Pulgarín | Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F3F7;
+    --sidebar-bg: #FFFFFF;
+    --purple: #5F3298;
+    --purple-deep: #4A2678;
+    --orchid: #C381CE;
+    --charcoal: #2E2E2E;
+    --gray: #6B6B6B;
+    --gray-light: #A0A0A6;
+    --blue-mist: #ABCFE6;
+    --pink-mist: #ECDCEE;
+    --divider: rgba(46,46,46,0.14);
+    --sidebar-w: 380px;
+    /* Cambia esta variable a "left" si prefieres el nombre y el rol
+       alineados a la izquierda en vez de centrados. */
+    --name-align: center;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html,body{
+    background: #E7E4EB;
+    color: var(--charcoal);
+    font-family: 'Poppins', sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page-shell{
+    max-width:1080px;
+    margin:0 auto;
+    padding: 0 32px;
+    background: var(--bg);
+    box-shadow: 0 0 60px rgba(46,46,46,0.06);
+  }
+
+  a{ color: var(--purple); text-decoration:none; }
+  a:hover{ color: var(--orchid); }
+
+  h1,h2,h3,h4{
+    font-family:'Poppins', sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+    color: var(--charcoal);
+  }
+
+  /* ---------- HERO BANNER ---------- */
+  .hero{
+    width:auto;
+    margin: 0 -32px;
+    position:relative;
+    overflow:hidden;
+    background: var(--bg);
+    border-bottom:1px solid var(--divider);
+  }
+  .hero img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:230px;
+    object-fit:cover;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .layout{
+    display:flex;
+    align-items:stretch;
+  }
+
+  /* ---------- SIDEBAR ----------
+     .sidebar stretches to match the height of .main (its flex sibling),
+     so the white background reaches the bottom of the page with no gap.
+     .sidebar-inner is what actually sticks to the top of the viewport as
+     the page scrolls — there is no scrollbar of its own, the whole
+     document scrolls together. */
+  .sidebar{
+    width: var(--sidebar-w);
+    flex-shrink:0;
+    background: var(--bg);
+    border-right:1px solid var(--divider);
+  }
+  .sidebar-inner{
+    position: sticky;
+    top:0;
+    padding: 56px 40px 60px;
+  }
+
+  .avatar-ring{
+    width:168px; height:168px;
+    border-radius:50%;
+    padding:6px;
+    background: conic-gradient(from 200deg, var(--purple), var(--orchid), var(--blue-mist), var(--pink-mist), var(--purple));
+    margin: 0 auto 26px;
+  }
+  .avatar{
+    width:100%; height:100%;
+    border-radius:50%;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--orchid) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:52px;
+    color:#fff;
+    letter-spacing:0.02em;
+  }
+
+  .sidebar h1{
+    font-size:26px;
+    line-height:1.25;
+    margin-bottom:6px;
+    text-align: var(--name-align);
+  }
+  .role{
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--purple);
+    margin-bottom:14px;
+    text-align: var(--name-align);
+  }
+  .tagline{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:16.5px;
+    color:var(--gray);
+    margin-bottom:26px;
+    padding-left:14px;
+    border-left:2px solid var(--orchid);
+  }
+
+  .contact-list{
+    list-style:none;
+    margin-bottom:28px;
+    font-size:14px;
+  }
+  .contact-list li{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:8px;
+    color:var(--gray);
+    word-break:break-all;
+  }
+  .contact-list li a{ color:var(--charcoal); font-weight:500; }
+  .contact-list li a:hover{ color:var(--purple); }
+  .dot{ color:var(--orchid); font-weight:700; }
+
+  .btn-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    border-radius:8px;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    color:#fff !important;
+    background:var(--purple);
+    transition:background .15s ease, transform .15s ease;
+  }
+  .btn:hover{ background:var(--orchid); transform:translateY(-1px); }
+  .btn.secondary{ background:var(--charcoal); }
+  .btn.secondary:hover{ background:var(--gray); }
+
+  .side-section-title{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gray-light);
+    margin-bottom:12px;
+    margin-top:8px;
+  }
+
+  .badge-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px; align-items:flex-start; }
+  .badge-row img{ height:26px; border-radius:4px; display:block; }
+  .badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:6px;
+    background:var(--purple);
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.04em;
+  }
+  .badge.alt{ background:var(--orchid); }
+
+  .soft-skills{
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:2;
+    overflow-wrap: break-word;
+  }
+  .soft-skills .sep{ color:var(--orchid); margin:0 6px; }
+
+  .sidebar-footer{
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid var(--divider);
+    font-size:12px;
+    color:var(--gray-light);
+  }
+
+  /* ---------- MAIN CONTENT ---------- */
+  .main{
+    flex:1;
+    min-width:0;
+    padding:64px 64px 120px;
+  }
+
+  .about h2{ font-size:30px; margin-bottom:18px; }
+  .about p{ color:var(--gray); font-size:14.5px; max-width:66ch; margin-bottom:14px; }
+  .about strong{ color:var(--charcoal); }
+
+  .section-divider{
+    border:none;
+    border-top:1px solid var(--divider);
+    margin:56px 0;
+  }
+
+  .projects-heading{ font-size:30px; margin-bottom:8px; }
+  .projects-sub{ color:var(--gray-light); font-size:14px; margin-bottom:44px; }
+
+  .project{ margin-bottom:70px; }
+  .project h3{
+    font-size:23px;
+    margin-bottom:14px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .project-index{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    color:var(--orchid);
+    font-weight:600;
+    font-size:19px;
+  }
+  .project > p.desc{
+    color:var(--gray);
+    font-size:14.5px;
+    max-width:74ch;
+    margin-bottom:20px;
+  }
+  .project > p.desc_img{
+    color:var(--gray);
+    font-size:12.5px;
+    max-width:74ch;
+    margin-bottom:20px;
+  }
+
+  .tools-label{
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--gray-light);
+    margin-bottom:10px;
+  }
+
+  .tools-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px; }
+  .tool-badge{
+    padding:6px 13px;
+    border-radius:6px;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    color:#fff;
+    background:var(--charcoal);
+  }
+  .tool-badge.tag{ background:var(--purple); }
+
+  .project h4{
+    font-size:15.5px;
+    margin:22px 0 10px;
+    color:var(--charcoal);
+  }
+  .project ol, .project ul{
+    padding-left:20px;
+    color:var(--gray);
+    font-size:14.5px;
+    margin-bottom:6px;
+  }
+  .project li{ margin-bottom:6px; }
+  .project ul.dash{ list-style:none; padding-left:0; }
+  .project ul.dash li{ padding-left:16px; position:relative; }
+  .project ul.dash li::before{
+    content:"—";
+    position:absolute; left:0; top:0;
+    color:var(--orchid);
+  }
+
+  .viz-placeholder{
+    width:100%;
+    max-width:560px;
+    aspect-ratio:16/9;
+    border-radius:10px;
+    background:
+      repeating-linear-gradient(135deg, rgba(95,50,152,0.06) 0 12px, rgba(195,129,206,0.06) 12px 24px),
+      linear-gradient(135deg, var(--sidebar-bg), var(--bg));
+    border:1.5px dashed var(--divider);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gray-light);
+    font-size:13px;
+    font-weight:600;
+    text-align:center;
+    margin:14px 0 24px;
+    padding:0px;
+  }
+
+  .viz-placeholder img{
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  border-radius:10px;
+  }
+
+  .repo-link{
+    display:inline-block;
+    font-size:14px;
+    font-weight:600;
+    margin-top:6px;
+  }
+
+  .edit-note{
+    display:inline-block;
+    margin-top:4px;
+    font-size:11.5px;
+    color:var(--orchid);
+    font-weight:600;
+    background:rgba(195,129,206,0.1);
+    padding:3px 9px;
+    border-radius:5px;
+  }
+
+  .page-footer{
+    text-align:center;
+    font-size:12.5px;
+    color:var(--gray-light);
+    padding:30px 0 10px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .layout{ flex-direction:column; }
+    .sidebar{
+      width:100%;
+      border-right:none;
+      border-bottom:1px solid var(--divider);
+    }
+    .sidebar-inner{
+      position:relative;
+      top:auto;
+      padding:40px 28px;
+    }
+    .main{ padding:44px 24px 90px; }
+    .hero img{ max-height:150px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .btn{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page-shell">
+
+  <div class="hero">
+  <img src="img/banner_pfori.png" alt="Marisol Martínez Pulgarín — Portafolio de Proyectos"> 
+  </div>
+  <!-- Para usar tu propio banner en vez del incrustado en base64, reemplaza
+       la línea de arriba por (y coloca tu imagen junto a este archivo .html):
+       <img src="tu-banner.jpg" alt="Marisol Martínez Pulgarín — Portafolio de Proyectos"> -->
+
+  <div class="layout">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+     <div class="sidebar-inner">
+      <!--<div class="avatar-ring"> <div class="avatar">MM</div></div>-->
+          <div class="avatar-ring"><img src="img/foto.jpg" style="width:100%;height:100%;border-radius:50%;object-fit:cover;"></div>
+      <!-- Reemplaza el círculo de arriba por tu foto:
+           <div class="avatar-ring"><img src="tu-foto.jpg" style="width:100%;height:100%;border-radius:50%;object-fit:cover;"></div> -->
+
+      <h1>Marisol Martínez Pulgarín</h1>
+      <!-- <div class="role">Data Analyst</div> -->
+      
+      <section class="about">
+       <p>¡Hola! Te doy la bienvenida a mi portafolio de proyectos de Análisis de Datos.</p>
+       <!-- <p class="tagline">&ldquo;Explorando datos. Descubriendo hallazgos. Creando valor.&rdquo;</p> -->
+      </section>
+
+      <ul class="contact-list">
+        <li>✉️ <a href="mailto:marisol.martinezpulgarin@gmail.com">marisol.martinezpulgarin@gmail.com</a></li>
+        <li>🔗 <a href="https://github.com/marisolmtzp" target="_blank" rel="noopener">github.com/marisolmtzp</a></li>
+      </ul>
+
+      <div class="btn-row">
+        <a class="btn" href="https://www.linkedin.com/in/marisolmtzp/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn secondary" href="https://marisolmtzp.github.io/assets/ES_MMP.pdf" target="_blank">Currículum Vitae</a>
+      </div>
+
+      <div class="side-section-title">Herramientas técnicas</div>
+      <div class="badge-row">
+        <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+        <img src="https://img.shields.io/badge/SQL-025E8C?style=for-the-badge&logo=mysql&logoColor=white" alt="SQL">
+        <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
+        <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy">
+        <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white" alt="Matplotlib">
+        <img src="https://img.shields.io/badge/Seaborn-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Seaborn">
+        <img src="https://img.shields.io/badge/SciPy-8CAAE6?style=for-the-badge&logo=scipy&logoColor=white" alt="SciPy">
+        <img src="https://img.shields.io/badge/Statsmodels-2C3E50?style=for-the-badge" alt="Statsmodels">      
+        <img src="https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI">
+        <img src="https://img.shields.io/badge/DAX-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="DAX">
+        <img src="https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white" alt="Tableau">
+        <!-- <img src="https://img.shields.io/badge/Google_Data_Studio-669DF6?style=for-the-badge&logo=google&logoColor=white" alt="Google Data Studio">-->
+        <img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white" alt="Excel">
+        <img src="https://img.shields.io/badge/Google_Sheets-34A853?style=for-the-badge&logo=googlesheets&logoColor=white" alt="Google Sheets">
+        <!--<img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white" alt="Scikit-learn">-->
+        <!--<img src="https://img.shields.io/badge/XGBoost-005571?style=flat" alt="XGBoost">-->
+        <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="Oracle">
+        <img src="https://img.shields.io/badge/PL%2FSQL-F80000?style=for-the-badge" alt="PL/SQL">
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+        <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+        <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt="MariaDB">
+        <img src="https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL Server">
+        <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter">
+        <img src="https://img.shields.io/badge/Google_Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white" alt="Google Colab">
+        <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+      </div>
+
+  <!--<div class="side-section-title">Habilidades blandas</div>
+      <p class="soft-skills">
+        <span>Análisis de datos</span><span class="sep">·</span>
+        <span>Pensamiento crítico y rigor analítico</span><span class="sep">·</span>
+        <span>Resolución de problemas</span><span class="sep">·</span>
+        <span>Storytelling de datos</span><span class="sep">·</span>
+        <span>Comunicación efectiva</span><span class="sep">·</span>
+        <span>Trabajo en equipo</span><span class="sep">·</span>
+        <span>Orientación a resultados</span><span class="sep">·</span>
+        <span>Optimización de procesos</span><span class="sep">·</span>
+        <span>Atención al detalle</span><span class="sep">·</span>
+        <span>Proactividad</span><span class="sep">·</span>
+        <span>Adaptabilidad</span>
+      </p> -->
+
+
+      <!--<div class="sidebar-footer"> Portafolio de proyectos de Análisis de Datos. </div>-->
+       
+     </div>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="main">
+
+      <section class="about">
+        <h2>Acerca de mí</h2>
+       <!-- <p><strong>[Edita esta introducción]</strong> — Soy analista de datos con experiencia en la extracción, limpieza y modelado de 
+          datos para generar insights que apoyan decisiones estratégicas de negocio.</p>
+        <p>Trabajo con <strong>Python, SQL y Pandas</strong> para el procesamiento y análisis de datos, y con 
+        <strong>Power BI y Tableau</strong> para construir dashboards y contar historias con datos que sean claras y 
+        accionables para distintas audiencias.</p> -->
+        
+      <p class="desc">Me certifiqué como <strong>Analista de Datos</strong> porque disfruto convertir datos desordenados en dashboards limpios que ayudan a los equipos a tomar mejores decisiones basadas en evidencia.</p>
+      <p class="desc">Comencé en desarrollo de software, seguí varios años operando ERP Oracle EBS y procesos de calidad CMMI, y luego fundé y operé dos marcas de venta minorista — una experiencia que me dio visión de negocio de primera mano.</p>
+      <p class="desc">Esa es la mezcla que inyecto a cada proyecto: aplico rigor técnico y analítico al <strong>ciclo completo del 
+        análisis —extracción, limpieza y modelado de datos—</strong>  y lo conecto con visión de negocio y curiosidad por las historias ocultas en los números para <strong>generar insights accionables que impulsan decisiones estratégicas.</strong></p>
+      <p class="desc">Puedes ver algunos de estos proyectos aplicados más abajo.</p>     
+      
+      <article class="project">
+           <h4>Habilidades tecnológicas</h4>
+           <ul class="dash">
+                <li>Análisis y gestión de datos utilizando <strong>Excel / SQL / Python</strong></li>
+                <li>Visualización de datos y narración de historias usando <strong>Power BI y Tableau</strong></li>
+           </ul>
+
+           <h4>Habilidades blandas</h4>
+           <span class="edit-note">Análisis de datos</span>   
+           <span class="edit-note">Rigor analítico y pensamiento crítico</span>
+           <span class="edit-note">Puente técnico-negocio</span>
+           <span class="edit-note">Comunicación efectiva</span>
+           <span class="edit-note">Storytelling de datos</span>
+           <span class="edit-note">Colaboración con equipos multidisciplinarios</span>
+           <span class="edit-note">Proactividad y autogestión</span>
+           <span class="edit-note">Orientación a resultados</span>
+           <span class="edit-note">Optimización de procesos</span>
+           <span class="edit-note">Atención al detalle</span>    
+           <span class="edit-note">Adaptabilidad</span>   
+      </article>
+</section>
+      
+<hr class="section-divider">
+
+      <section class="projects">
+        <h2 class="projects-heading">Proyectos seleccionados</h2>
+        <br>
+        <!--<p class="projects-sub">Reemplaza los proyectos de ejemplo con tus propios casos de estudio, siguiendo la misma estructura.</p> -->
+
+    <!-- ---- PROJECT 1 (placeholder) -------------------------------------------------------------------------------------------------------->
+    <article class="project">
+    <h3><span class="project-index">01</span> Análisis de desempeño comercial para empresa inmobiliaria </h3>
+    <p class="desc">En el sector inmobiliario, comprender a fondo el desempeño comercial es fundamental para <strong>sostener el crecimiento, 
+      garantizar la rentabilidad</strong> y <strong>responder de forma ágil al comportamiento de los clientes</strong>. 
+      Andes Capital Real Estate gestiona la venta de distintos tipos de propiedades a través de múltiples canales y segmentos de clientes, 
+      pero al operar la información solo a nivel transaccional, carece de una visión analítica clara del negocio. Contar con un dashboard 
+      ejecutivo permite <strong>analizar ventas, clientes y propiedades de forma integrada</strong>, apoyando <strong>decisiones estratégicas 
+      basadas en datos</strong>.</p>
+          <div class="tools-label">Herramientas y tipo de proyecto</div>
+          <div class="tools-row">
+          <!--  <span class="tool-badge">Power BI</span>
+          <span class="tool-badge tag">Limpieza de datos</span> -->
+          <img src="https://img.shields.io/badge/Python-2E2E2E?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+          <img src="https://img.shields.io/badge/Excel-2E2E2E?style=for-the-badge&logo=microsoftexcel&logoColor=white" alt="Excel">            
+          <img src="https://img.shields.io/badge/Power%20BI-2E2E2E?style=for-the-badge&logo=powerbi&logoColor=white" alt="Power BI">
+          <img src="https://img.shields.io/badge/Limpieza%20de%20datos-5F3298?style=for-the-badge" alt="Limpieza de datos">
+          <img src="https://img.shields.io/badge/Transformación%20de%20datos-5F3298?style=for-the-badge" alt="Transformación de datos">
+          <img src="https://img.shields.io/badge/Análisis%20exploratorio-5F3298?style=for-the-badge" alt="Análisis exploratorio">
+          <img src="https://img.shields.io/badge/Cohortes%20de%20retención-5F3298?style=for-the-badge" alt="Cohortes de retención">
+          </div>
+          <h4>Preguntas clave</h4>
+          <ol>
+            <li>¿Cuál es el ingreso total generado por las ventas de propiedades?</li>
+            <li>¿Qué tipo de propiedad genera más ingresos?</li>
+            <li>¿Qué segmentos de clientes compran más?</li>
+            <li>¿Cómo evolucionan las ventas en el tiempo?</li>
+            <li>¿El negocio está creciendo año contra año?</li>
+            <li>¿Los clientes vuelven a comprar después de su primera compra?</li>
+          </ol>
+          <h4>Metodología</h4>
+          <ul class="dash">
+             <li><strong>Limpieza de datos:</strong> Unificación de las fuentes en un archivo consolidado, corrección de codificación y, validación de duplicados y consistencia categórica.</li>
+             <li><strong>Modelado de datos:</strong> Construcción de un modelo relacional en esquema estrella y definición de métricas base y de participación para analizar el peso relativo de segmentos y categorías del negocio.</li>
+             <li><strong>Análisis exploratorio y de cohortes:</strong> Revisión de la evolución temporal de ventas, comparación entre las principales dimensiones del negocio y construcción de una matriz de retención mensual para identificar patrones de recompra.</li>
+             <li><strong>Construcción del dashboard:</strong> Desarrollo de un reporte interactivo en tres vistas (resumen ejecutivo, análisis comercial y cohortes), permitiendo explorar el negocio a distintos niveles de detalle y facilitando la toma de decisiones basada en datos en lugar de reportes estáticos.</li>
+          </ul>
+          <h4>Conclusiones y recomendaciones</h4>
+     <ul class="dash">
+            <strong>Hallazgos clave</strong><br><br> 
+            <li><strong>Casa</strong> es el tipo de propiedad con mayor ingreso, seguido de Comercial y Departamento; <strong>Ciudad de México</strong> concentra más ventas que Bogotá, y el <strong>canal Corredor</strong> genera más del doble de ingresos que la venta Directa.</li>
+            <li>Existe un <strong>patrón de estacionalidad recurrente en ambos años y ciudades</strong> (picos en marzo–abril y septiembre–noviembre, caídas en mayo–agosto), impulsado por volumen de ventas y no por variación de precio, ya que el ticket promedio se mantiene estable.</li>
+            <li>El segmento de <strong>clientes de primera vez concentra la mayor parte del ingreso</strong>, y las cohortes más tempranas (enero–abril) muestran la mayor recurrencia de compra.</li>
+     </ul><br>
+     <ul class="dash">
+         <strong>Estrategias recomendadas</strong><br><br>  
+         <li><strong>Priorizar propiedad tipo Casa:</strong> Enfocar esfuerzos comerciales en el tipo de propiedad con mayor generación de ingresos.</li>
+         <li><strong>Fortalecer el canal Corredor:</strong>  Reforzar la relación con este canal dado su peso dominante en el revenue.</li>
+         <li><strong>Mejorar la recompra en cohortes recientes:</strong>  Diseñar estrategias de retención enfocadas en clientes adquiridos en periodos más recientes.</li>
+         <li><strong>Incentivar la demanda en meses valle:</strong>  Implementar acciones de marketing no ligadas al precio durante los periodos de menor actividad, apalancándose en los segmentos y canales dominantes.</li>
+     </ul>
+          <h4>Visualizaciones destacadas</h4>
+     <p class="desc_img">
+     <strong>1. Patrón de estacionalidad recurrente:</strong><br>
+       Observamos que el patrón de estacionalidad se repite en ambos años y ciudades (picos en mar-abr y sep–nov, caídas en may–ago). 
+       Sin embargo, el ticket promedio se mantiene estable a lo largo del año, mientras que la cantidad de ventas varía fuertemente, 
+       lo que indica se debe a un cambio en el volumen de operaciones y no a variación en el precio de venta.</p>
+      <div class="viz-placeholder"><img src="img/p10_v_dashboard1.png" alt="p10_v_dashboard1.png"> </div>
+      
+      <p class="desc_img">
+      <strong>2. Análisis de cohortes:</strong><br>
+      Las cohortes de clientes adquiridos entre enero y abril de 2023 muestran la mayor recurrencia de compra en los meses posteriores, 
+      mientras que las cohortes más tardías presentan una recompra menor y más irregular, reforzando la oportunidad de fortalecer la retención 
+      en los clientes más recientes. </p>
+      <div class="viz-placeholder"><img src="img/p10_cohortes.png" alt="p10_cohortes.png"> </div>
+      <a class="repo-link" href="https://github.com/marisolmtzp/10_dashboard_analisis_comercial_ACRE" target="_blank" 
+        rel="noopener">Explora más detalles del proyecto en el repositorio completo →</a>
+    </article>
+        
+  <!-- ---- PROJECT 2 (placeholder) -------------------------------------------------------------------------------------------------------->
+  <article class="project">
+  <h3><span class="project-index">02</span> Análisis de desempeño comercial en empresa retail </h3>
+  <p class="desc">En el retail multicategoría, entender qué está pasando con las ventas —y por qué— es lo que <strong>separa una operación reactiva 
+    de una que anticipa sus propios riesgos</strong>. Andes Retail Group opera en Perú, Chile y Colombia con cuatro categorías de producto, 
+    y aunque el volumen de operación se mantuvo estable entre 2024 y 2025, los ingresos totales cayeron sin que la causa fuera evidente a simple vista. 
+    Este proyecto convierte esa información transaccional en un dashboard ejecutivo en Power BI que <strong>responde en segundos qué segmentos, categorías 
+    y regiones están detrás de esa caída</strong> — y <strong>dónde exactamente está la oportunidad de recuperarla</strong>.</p>
+
+    <div class="tools-label">Herramientas y tipo de proyecto</div>
+    <div class="tools-row">
+      <img src="https://img.shields.io/badge/Power%20BI-2E2E2E?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI">
+      <img src="https://img.shields.io/badge/Power%20Query-2E2E2E?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power Query">
+      <img src="https://img.shields.io/badge/Excel-2E2E2E?style=for-the-badge&logo=microsoftexcel&logoColor=white" alt="Excel">
+      <img src="https://img.shields.io/badge/Análisis%20Exploratorio-5F3298?style=for-the-badge" alt="Análisis exploratorio">
+      <img src="https://img.shields.io/badge/Dashboard%20Design-5F3298?style=for-the-badge" alt="Dashboard Design">         
+      <img src="https://img.shields.io/badge/SCQA-5F3298?style=for-the-badge" alt="SCQA">
+    </div>
+    <h4>Preguntas clave</h4>
+    <ol>
+       <li>¿Cómo ha evolucionado el ingreso total entre 2024 y 2025?</li>
+       <li>¿Qué segmentos de clientes aportan mayor ingreso y rentabilidad?</li>
+       <li>¿Qué categorías de producto tienen mayor impacto en el negocio?</li>
+       <li>¿Existen diferencias relevantes entre países o regiones?</li>
+       <li>¿Qué patrones temporales se observan a lo largo del año?</li>
+       <li>¿Dónde podrían existir oportunidades de mejora comercial?</li>
+      </ol>
+      <h4>Metodología</h4>
+          <ul class="dash">
+            <li><strong>Limpieza de datos:</strong> Importación del dataset transaccional, validación de tipos de datos y creación de una columna calculada para clasificar el nivel de venta de cada pedido.</li>
+            <li><strong>Diseño y planificación:</strong> Definición previa de las preguntas de negocio a responder, los KPIs necesarios y la jerarquía visual del dashboard, antes de construir las visualizaciones.</li>
+            <li><strong>Construcción de visualizaciones:</strong> Desarrollo de dos vistas interactivas: una de resumen ejecutivo y otra de análisis detallado. Se agregaron filtros cruzados entre las principales dimensiones del negocio.</li>
+            <li><strong>Análisis exploratorio:</strong> Comparación de ingresos entre periodos, segmentos, categorías y regiones para identificar patrones y causas detrás del desempeño comercial.</li>
+            <li><strong>Narrativa de negocio:</strong> Estructuración de los hallazgos bajo un modelo narrativo (situación, complicación, pregunta, respuesta) y su traducción en un mensaje ejecutivo orientado a la toma de decisiones.</li>
+          </ul>
+       <h4>Conclusiones y recomendaciones</h4>
+          <ul class="dash">
+            <strong>Hallazgos clave</strong><br><br>
+            <li><strong>Los ingresos totales cayeron de 2024 a 2025</strong>, explicado por menos pedidos y un menor ticket promedio, concentrado casi en su totalidad en el <strong>segmento Premium</strong>.</li>
+            <li>La caída de Premium no es uniforme entre mercados: <strong>Chile-Premium concentra la caída más severa</strong>, seguido de Perú y Colombia; dentro de Premium, las categorías <strong>Ropa y Electrónica</strong> son las más afectadas.</li>
+            <li>La <strong>región Sur</strong> cae de forma consistente en los tres países, independientemente del segmento de cliente.</li>
+          </ul><br>
+          <ul class="dash">
+            <strong>Estrategias recomendadas</strong><br><br>
+            <li><strong>Revisar propuesta de valor y pricing en Premium:</strong> Evaluar ajustes de precio y valor percibido en Chile y Perú, los mercados más golpeados.</li>
+            <li><strong>Investigar causas en categorías clave:</strong> Profundizar en Ropa y Electrónica dentro de Premium (competencia, disponibilidad, preferencias del cliente).</li>
+            <li><strong>Analizar la región Sur en los tres países:</strong> Identificar causas operativas o logísticas comunes que expliquen la caída consistente en esta región.</li>
+          </ul>
+       <h4>Visualizaciones destacadas</h4>
+          <p class="desc_img">
+          <strong>1. Comparativa de evolución mensual 2024 vs 2025:</strong><br>
+            El patrón estacional se repite en ambos años, pero 2025 se mantiene por debajo de 2024 durante casi todo el periodo, 
+            cerrando con ingresos totales de $5.53 mill. y un ticket promedio de $1,106 — consistente con la caída explicada por 
+            menor volumen de pedidos y ticket promedio.</p>
+          <div class="viz-placeholder"><img src="img/p09_v_dashboard1.png" alt="p09_v_dashboard1.png"> </div>
+          <p class="desc_img">
+          <strong>2. Caída de ingresos por segmento de cliente:</strong><br>
+            Premium es el único segmento con una caída notable de 2024 a 2025 (de $1.40 mill. a $1.20 mill.), mientras que Estándar cae ligeramente 
+            y Económico se mantiene estable, confirmando que la caída general del negocio se concentra casi por completo en Premium.</p>
+          <div class="viz-placeholder"><img src="img/p09_v_dashboard2_1.png" alt="p09_v_dashboard2_1.pn"> </div>
+          <p class="desc_img">
+          <strong>3. Caída de Premium por país:</strong><br>
+            La caída de Premium no es uniforme entre mercados: Chile-Premium presenta la mayor caída, seguido de Perú, mientras que en Colombia 
+            el segmento se mantiene prácticamente estable.</p>
+          <div class="viz-placeholder"><img src="img/p09_v_dashboard2_2.png" alt="p09_v_dashboard2_2.png"> </div>
+          <p class="desc_img">
+          <strong>4. Caída de ingresos por región:</strong><br>
+            La región Sur cae de forma consistente en Chile, Colombia y Perú, mientras que Perú-Centro muestra la caída puntual más pronunciada entre 
+            todas las combinaciones de país-región.</p>
+          <div class="viz-placeholder"><img src="img/p09_v_dashboard2_3.png" alt="p09_v_dashboard2_3.png"> </div>
+        <a class="repo-link" href="https://github.com/marisolmtzp/09_dashboard_desempeno_comercial_ARG" target="_blank" 
+        rel="noopener">Explora más detalles del proyecto en el repositorio completo →</a>
+        </article>
+
+
+
+        
+        
+        <!-- ---- PROJECT 2 (placeholder) ---- -->
+       <!-- <article class="project">
+          <h3><span class="project-index">02</span> Nombre del proyecto <span class="edit-note">EDITAR</span></h3>
+          <p class="desc">Segundo proyecto de ejemplo: sustituye por tu propio caso, manteniendo la misma estructura de secciones para consistencia visual.</p>
+          <div class="tools-label">Herramientas y tipo de proyecto</div>
+          <div class="tools-row">
+            <span class="tool-badge">Power BI</span>
+            <span class="tool-badge">Tableau</span>
+            <span class="tool-badge">SQL</span>
+            <span class="tool-badge tag">Visualización de datos</span>
+            <span class="tool-badge tag">Storytelling</span>
+          </div>
+          <h4>Preguntas clave</h4>
+          <ol>
+            <li>¿Qué decisión de negocio debía apoyar este dashboard?</li>
+            <li>¿Qué métricas eran las más relevantes para el stakeholder?</li>
+          </ol>
+          <h4>Metodología</h4>
+          <ul class="dash">
+            <li><strong>Modelado de datos:</strong> estructura de tablas y relaciones para el dashboard.</li>
+            <li><strong>Diseño de visualización:</strong> criterios de diseño para claridad y usabilidad.</li>
+          </ul>
+          <h4>Conclusiones y recomendaciones</h4>
+          <ul class="dash">
+            <li>Insight principal que cambió una decisión o proceso.</li>
+          </ul>
+          <h4>Visualización destacada</h4>
+          <div class="viz-placeholder">Coloca aquí tu gráfica o captura del dashboard</div>
+          <a class="repo-link" href="#" target="_blank" rel="noopener">Explora el repositorio completo →</a>
+        </article>
+        -->
+
+ 
+        
+
+      </section>
+
+      <div class="page-footer">
+        Marisol Martínez Pulgarín — Data Analyst <span class="sep">·</span> Business Analyst <span class="sep">·</span> BI Developer
+      </div>
+
+    </main>
+  </div>
+
+  </div><!-- /.page-shell -->
+
+</body>
+</html>
